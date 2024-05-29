@@ -26,6 +26,11 @@ public static class VisitsEndpoints
             new DateTime(2024, 10, 2, 9, 0, 0)
         )
     ];
+
+    public static List<DateTime> reservedDates = [
+        new DateTime(2024, 10, 2, 8, 0, 0),
+        new DateTime(2024, 10, 2, 9, 0, 0)
+    ];
     
     public static RouteGroupBuilder MapVisitsEndpoints(this WebApplication app)
     {
@@ -56,8 +61,26 @@ public static class VisitsEndpoints
                 newVisit.CatColor,
                 newVisit.VisitDate);
 
+            
+            var dateIndex = reservedDates.FindIndex(date => date == newVisit.VisitDate);
+            
+            if (dateIndex != -1)
+            {
+                return Results.Content("Hour already booked!");
+            }
+            
+            if (newVisit.VisitDate.Minute != 0 || newVisit.VisitDate.Second != 0)
+                return Results.Content("Only full hours availible!");
+            
+            if (newVisit.VisitDate.Hour < 8 || newVisit.VisitDate.Hour > 16)
+                return Results.Content("Vet not working at this hour!");
+            
+            if(newVisit.VisitDate.DayOfWeek == DayOfWeek.Saturday || newVisit.VisitDate.DayOfWeek == DayOfWeek.Sunday)
+                return Results.Content("We are not working at weekends!");
+            
             visits.Add(visit);
-
+            reservedDates.Add(newVisit.VisitDate);
+            
             return Results.CreatedAtRoute(GetVisitEndpointName, new { id = visit.ID }, visit);
         });
 
@@ -71,8 +94,21 @@ public static class VisitsEndpoints
                 return Results.NotFound();
             }
 
+            var dateIndex = reservedDates.FindIndex(date => date == updatedVisit.VisitDate.Date);
+            
+            if (dateIndex != -1)
+            {
+                return Results.Content("Hour already booked availible!");
+            }
+            
+            if (updatedVisit.VisitDate.Minute != 0 || updatedVisit.VisitDate.Second != 0)
+                return Results.Content("Only full hours availible!");
+            
             if (updatedVisit.VisitDate.Hour < 8 || updatedVisit.VisitDate.Hour > 16)
                 return Results.Content("Vet not working at this hour!");
+            
+            if(updatedVisit.VisitDate.DayOfWeek == DayOfWeek.Saturday || updatedVisit.VisitDate.DayOfWeek == DayOfWeek.Sunday)
+                return Results.Content("We are not working at weekends!");
             
             visits[index] = new VisitDTO(
                 id,
@@ -83,7 +119,9 @@ public static class VisitsEndpoints
                 updatedVisit.CatColor,
                 updatedVisit.VisitDate
             );
-
+            
+            reservedDates.Add(updatedVisit.VisitDate);
+            
             return Results.NoContent();
         });
 
