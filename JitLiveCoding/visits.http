@@ -2,7 +2,7 @@ GET http://localhost:5015/visits
 Accept: application/json
 
 ###
-GET http://localhost:5015/visits/3
+GET http://localhost:5015/visits/2
 Accept: application/json
 
 ###
