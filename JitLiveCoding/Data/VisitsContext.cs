@@ -6,5 +6,5 @@ namespace JitLiveCoding.Data;
 public class VisitsContext(DbContextOptions<VisitsContext> options) 
     : DbContext(options)
 {
-    public DbSet<Visit> Games => Set<Visit>();
+    public DbSet<Visit> Visits => Set<Visit>();
 }
