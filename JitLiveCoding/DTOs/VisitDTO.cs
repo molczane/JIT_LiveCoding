@@ -6,5 +6,6 @@ public record VisitDTO(
         string ReserverSurname ,
         string CatName,
         int CatAgeInMonths,
-        string CatColor 
+        string CatColor,
+        DateTime VisitDate
         );

@@ -14,7 +14,8 @@ Content-Type: application/json
   "ReserverSurname": "Majk",
   "CatName": "Majkel",
   "CatAgeInMonths": 43,
-  "CatColor": "Gray"
+  "CatColor": "Gray",
+  "visitDate": "2024-10-02T10:00:00"
 }
 
 ###

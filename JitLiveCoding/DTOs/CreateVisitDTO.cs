@@ -1,9 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+
 namespace JitLiveCoding.DTOs;
 
 public record CreateVisitDTO(
-    string ReserverName,
-    string ReserverSurname ,
-    string CatName,
-    int CatAgeInMonths,
-    string CatColor 
+    [Required] string ReserverName,
+    [Required] string ReserverSurname ,
+    [Required] string CatName,
+    [Required] int CatAgeInMonths,
+    [Required] string CatColor,
+    [Required] DateTime VisitDate
     );

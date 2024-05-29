@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace JitLiveCoding.DTOs;
 
 public record UpdateVisitDTO(
@@ -5,5 +7,6 @@ public record UpdateVisitDTO(
     string ReserverSurname ,
     string CatName,
     int CatAgeInMonths,
-    string CatColor 
+    string CatColor,
+    [Required] DateTime VisitDate
     );

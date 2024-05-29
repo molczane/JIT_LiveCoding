@@ -13,7 +13,8 @@ public static class VisitsEndpoints
             "Monk",
             "Fred",
             30,
-            "Red"
+            "Red",
+            new DateTime(2024, 10, 2, 8, 0, 0)
         ),
         new (
             2,
@@ -21,7 +22,8 @@ public static class VisitsEndpoints
             "Tuz",
             "Garfield",
             32,
-            "Blue"
+            "Blue",
+            new DateTime(2024, 10, 2, 9, 0, 0)
         )
     ];
     
@@ -51,7 +53,8 @@ public static class VisitsEndpoints
                 newVisit.ReserverSurname,
                 newVisit.CatName,
                 newVisit.CatAgeInMonths,
-                newVisit.CatColor);
+                newVisit.CatColor,
+                newVisit.VisitDate);
 
             visits.Add(visit);
 
@@ -67,14 +70,18 @@ public static class VisitsEndpoints
             {
                 return Results.NotFound();
             }
-    
+
+            if (updatedVisit.VisitDate.Hour < 8 || updatedVisit.VisitDate.Hour > 16)
+                return Results.Content("Vet not working at this hour!");
+            
             visits[index] = new VisitDTO(
                 id,
                 updatedVisit.ReserverName,
                 updatedVisit.ReserverSurname,
                 updatedVisit.CatName,
                 updatedVisit.CatAgeInMonths,
-                updatedVisit.CatColor
+                updatedVisit.CatColor,
+                updatedVisit.VisitDate
             );
 
             return Results.NoContent();
