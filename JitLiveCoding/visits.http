@@ -15,7 +15,7 @@ Content-Type: application/json
   "CatName": "Majkel",
   "CatAgeInMonths": 43,
   "CatColor": "Gray",
-  "visitDate": "2024-06-08T10:00:00"
+  "visitDate": "2024-05-08T10:00:00"
 }
 
 ###

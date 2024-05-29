@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JitLiveCoding")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0310e547f1e4b57ff63ed87bfd0a057c381e4036")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd7f1de94282e1e8bf1691123e7a7ab54ed0de27")]
 [assembly: System.Reflection.AssemblyProductAttribute("JitLiveCoding")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JitLiveCoding")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
