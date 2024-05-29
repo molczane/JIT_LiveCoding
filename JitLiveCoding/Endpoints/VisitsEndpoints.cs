@@ -16,7 +16,7 @@ public static class VisitsEndpoints
             "Red"
         ),
         new (
-            1,
+            2,
             "Anna",
             "Tuz",
             "Garfield",
